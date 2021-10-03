@@ -13,19 +13,9 @@ import java.util.List;
 @Table(name = "\"Ofertantes\"")
 @OnDelete(action = OnDeleteAction.CASCADE)
 @PrimaryKeyJoinColumn(name = "id", foreignKey = @ForeignKey(name = "fk_usuario_ofertante"))
-public class Ofertante extends Usuario implements Serializable {
+public class Ofertante extends UsuarioSubasta implements Serializable {
 
     private static final long serialVersionUID = 7207794638481755919L;
-
-    @Column(name = "puntuacion", nullable = true)
-    @Getter
-    @Setter
-    private double puntuacion;
-
-    @OneToMany(mappedBy = "ofertante", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @Getter
-    @Setter
-    private List<Comentario> comentarios;
 
     @OneToMany(mappedBy = "ofertante", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter
