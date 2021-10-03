@@ -20,6 +20,6 @@ public class SolicitanteService {
     }
 
     public Solicitante getSolicitanteById(Integer id){
-        return iSolicitanteRepository.getById(id);
+        return iSolicitanteRepository.findById(id).get();
     }
 }

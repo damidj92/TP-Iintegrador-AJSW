@@ -20,6 +20,6 @@ public class OfertanteService {
     }
 
     public Ofertante getOfertanteById(Integer id){
-        return iOfertanteRepository.getById(id);
+        return iOfertanteRepository.findById(id).get();
     }
 }

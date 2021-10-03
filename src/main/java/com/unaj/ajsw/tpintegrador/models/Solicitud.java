@@ -1,5 +1,8 @@
 package com.unaj.ajsw.tpintegrador.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,9 +11,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity(name = "Trabajo")
-@Table(name = "\"Trabajos\"")
-public class Trabajo implements Serializable {
+@Entity(name = "Solicitud")
+@Table(name = "\"Solicitudes\"")
+public class Solicitud implements Serializable {
 
     private static final long serialVersionUID = -4115948181188605247L;
 
@@ -18,7 +21,7 @@ public class Trabajo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private Long key_trabajo;
+    private Long key_solicitud;
 
     @ManyToOne
     @JoinColumn(
@@ -39,12 +42,14 @@ public class Trabajo implements Serializable {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "tipo_trabajo", nullable = false)
+    @Getter
+    @Setter
     private TipoTrabajo tipo;
 
     @Column(name = "fecha_realizar", nullable = false)
     @Getter
     @Setter
-    private LocalDate fecha_realizar;
+    private LocalDate fechaRealizar;
 
     @Column(name = "zona", nullable = false)
     @Getter
@@ -56,7 +61,12 @@ public class Trabajo implements Serializable {
     @Setter
     private String descripcion;
 
-    @OneToMany(mappedBy = "trabajo", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIdentityInfo(
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "key_oferta"
+    )
+    @JsonIdentityReference(alwaysAsId = true)
+    @OneToMany(mappedBy = "solicitud", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter
     @Setter
     private List<Oferta> ofertas;

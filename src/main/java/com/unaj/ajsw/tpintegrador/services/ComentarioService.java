@@ -20,6 +20,6 @@ public class ComentarioService {
     }
 
     public Comentario getComentarioById(Long id) {
-        return iComentarioRepository.getById(id);
+        return iComentarioRepository.findById(id).get();
     }
 }

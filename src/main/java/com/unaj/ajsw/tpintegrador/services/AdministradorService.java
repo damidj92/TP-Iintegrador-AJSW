@@ -22,6 +22,6 @@ public class AdministradorService {
     }
 
     public Administrador getAdministradorById(Integer id){
-        return iAdministradorRepository.getById(id);
+        return iAdministradorRepository.findById(id).get();
     }
 }

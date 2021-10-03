@@ -1,5 +1,8 @@
 package com.unaj.ajsw.tpintegrador.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
@@ -17,6 +20,11 @@ public class Ofertante extends UsuarioSubasta implements Serializable {
 
     private static final long serialVersionUID = 7207794638481755919L;
 
+    @JsonIdentityInfo(
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "key_oferta"
+    )
+    @JsonIdentityReference(alwaysAsId = true)
     @OneToMany(mappedBy = "ofertante", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter
     @Setter

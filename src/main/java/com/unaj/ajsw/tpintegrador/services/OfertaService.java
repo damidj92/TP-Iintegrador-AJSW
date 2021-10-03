@@ -22,7 +22,7 @@ public class OfertaService {
     }
 
     public Oferta getOfertaById(Long id){
-        return iOfertaRepository.getById(id);
+        return iOfertaRepository.findById(id).get();
     }
 
     public void deleteOfertaById(Long id){

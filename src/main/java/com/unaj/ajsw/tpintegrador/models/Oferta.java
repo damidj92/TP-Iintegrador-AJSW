@@ -37,12 +37,12 @@ public class Oferta implements Serializable {
 
     @ManyToOne
     @JoinColumn(
-            name = "trabajo_id",
-            referencedColumnName = "key_trabajo"
+            name = "solicitud_id",
+            referencedColumnName = "key_solicitud"
     )
     @Getter
     @Setter
-    private Trabajo trabajo;
+    private Solicitud solicitud;
 
     @Column(name = "precio", nullable = false)
     @Getter
@@ -53,4 +53,9 @@ public class Oferta implements Serializable {
     @Getter
     @Setter
     private String descripcion;
+
+    @Column(name = "aprobado", columnDefinition = "boolean default false")
+    @Getter
+    @Setter
+    private Boolean aprobado;
 }
