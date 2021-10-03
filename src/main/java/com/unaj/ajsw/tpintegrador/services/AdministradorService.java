@@ -20,4 +20,8 @@ public class AdministradorService {
     public Administrador saveAdministrador(Administrador administrador){
         return iAdministradorRepository.save(administrador);
     }
+
+    public Administrador getAdministradorById(Integer id){
+        return iAdministradorRepository.getById(id);
+    }
 }
