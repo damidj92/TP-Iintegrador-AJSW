@@ -18,12 +18,12 @@ public class Comentario implements Serializable {
 
     @ManyToOne
     @JoinColumn(
-            name = "solicitante_id",
+            name = "usuario_subasta_id",
             referencedColumnName = "id",
             foreignKey = @ForeignKey(
-                    name = "fk_usuario_solicitante",
-                    foreignKeyDefinition = "FOREIGN KEY (solicitante_id)\n" +
-                            "        REFERENCES public.\"Solicitantes\" (id) MATCH SIMPLE\n" +
+                    name = "fk_usuario_subasta",
+                    foreignKeyDefinition = "FOREIGN KEY (usuario_subasta_id)\n" +
+                            "        REFERENCES public.\"UsuariosSubastas\" (id) MATCH SIMPLE\n" +
                             "        ON UPDATE CASCADE\n" +
                             "        ON DELETE CASCADE",
                     value = ConstraintMode.CONSTRAINT
@@ -31,24 +31,7 @@ public class Comentario implements Serializable {
     )
     @Getter
     @Setter
-    private Solicitante solicitante;
-
-    @ManyToOne
-    @JoinColumn(
-            name = "ofertante_id",
-            referencedColumnName = "id",
-            foreignKey = @ForeignKey(
-                    name = "fk_usuario_ofertante",
-                    foreignKeyDefinition = "FOREIGN KEY (ofertante_id)\n" +
-                            "        REFERENCES public.\"Ofertantes\" (id) MATCH SIMPLE\n" +
-                            "        ON UPDATE CASCADE\n" +
-                            "        ON DELETE CASCADE",
-                    value = ConstraintMode.CONSTRAINT
-            )
-    )
-    @Getter
-    @Setter
-    private Ofertante ofertante;
+    private UsuarioSubasta usuarioSubasta;
 
     @Column(name = "comentario", nullable = false)
     @Getter
